@@ -13,5 +13,5 @@ public enum CellSnapshotStatus {
     CellSnapshotStatus(String description) {
         this.description = description;
     }
-    
+
 }

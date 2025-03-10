@@ -37,14 +37,14 @@ public class CellPosition {
 
     public boolean canCalculatePositionBy(RelativePosition relativePosition) {
         return this.rowIndex + relativePosition.getDeltaRow() > 0
-                && this.colIndex + relativePosition.getDeltaCol() > 0;
+            && this.colIndex + relativePosition.getDeltaCol() > 0;
     }
 
     public CellPosition calculatePositionBy(RelativePosition relativePosition) {
         if (this.canCalculatePositionBy(relativePosition)) {
             return CellPosition.of(
-                    rowIndex + relativePosition.getDeltaRow(),
-                    colIndex + relativePosition.getDeltaCol()
+                rowIndex + relativePosition.getDeltaRow(),
+                colIndex + relativePosition.getDeltaCol()
             );
         }
         throw new IllegalArgumentException("움직일 수 있는 좌표가 아닙니다.");

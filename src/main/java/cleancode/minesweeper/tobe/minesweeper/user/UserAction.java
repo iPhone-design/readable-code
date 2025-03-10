@@ -11,5 +11,5 @@ public enum UserAction {
     UserAction(String description) {
         this.description = description;
     }
-    
+
 }
