@@ -37,7 +37,7 @@ public class LandMindCell implements Cell {
 
     @Override
     public boolean isChecked() {
-        return cellStatus.isChecked();
+        return cellStatus.isFlagged();
     }
 
     @Override
