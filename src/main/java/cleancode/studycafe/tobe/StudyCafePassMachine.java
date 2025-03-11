@@ -33,7 +33,9 @@ public class StudyCafePassMachine {
                 outputHandler.showPassListForSelection(hourlyPasses);
                 StudyCafePass selectedPass = inputHandler.getSelectPass(hourlyPasses);
                 outputHandler.showPassOrderSummary(selectedPass, null);
-            } else if (doseUserSelectedWeeklyPass(studyCafePassType)) {
+                return;
+            }
+            if (doseUserSelectedWeeklyPass(studyCafePassType)) {
                 StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
                 List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
                 List<StudyCafePass> weeklyPasses = studyCafePasses.stream()
@@ -42,7 +44,9 @@ public class StudyCafePassMachine {
                 outputHandler.showPassListForSelection(weeklyPasses);
                 StudyCafePass selectedPass = inputHandler.getSelectPass(weeklyPasses);
                 outputHandler.showPassOrderSummary(selectedPass, null);
-            } else if (doseUserSelectedFixedPass(studyCafePassType)) {
+                return;
+            }
+            if (doseUserSelectedFixedPass(studyCafePassType)) {
                 StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
                 List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
                 List<StudyCafePass> fixedPasses = studyCafePasses.stream()
