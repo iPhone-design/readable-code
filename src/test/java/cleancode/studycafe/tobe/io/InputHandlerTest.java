@@ -64,7 +64,7 @@ class InputHandlerTest {
         StudyCafeSeatPass selectedSeatPass = inputHandler.getSelectPass(passes, userInput);
 
         // then
-        assertThat(selectedSeatPass).isInstanceOf(studyCafeSeatPass.getClass());
+        assertThat(selectedSeatPass).isEqualTo(studyCafeSeatPass);
     }
 
     @Test
