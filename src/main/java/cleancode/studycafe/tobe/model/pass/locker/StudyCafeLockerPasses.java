@@ -3,6 +3,7 @@ package cleancode.studycafe.tobe.model.pass.locker;
 import cleancode.studycafe.tobe.model.pass.StudyCafeSeatPass;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class StudyCafeLockerPasses {
@@ -21,6 +22,18 @@ public class StudyCafeLockerPasses {
         return lockerPasses.stream()
             .filter(pass::isSameDurationType)
             .findFirst();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        StudyCafeLockerPasses that = (StudyCafeLockerPasses) o;
+        return Objects.equals(lockerPasses, that.lockerPasses);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(lockerPasses);
     }
 
 }

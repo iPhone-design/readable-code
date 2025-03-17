@@ -1,6 +1,7 @@
 package cleancode.studycafe.tobe.model.pass;
 
 import java.util.List;
+import java.util.Objects;
 
 public class StudyCafeSeatPasses {
 
@@ -18,6 +19,18 @@ public class StudyCafeSeatPasses {
         return passes.stream()
             .filter(studyCafePass -> studyCafePass.isSamePassType(studyCafePassType))
             .toList();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        StudyCafeSeatPasses that = (StudyCafeSeatPasses) o;
+        return Objects.equals(passes, that.passes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(passes);
     }
 
 }
