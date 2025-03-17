@@ -6,8 +6,11 @@ import cleancode.studycafe.tobe.model.pass.StudyCafeSeatPass;
 import cleancode.studycafe.tobe.model.pass.locker.StudyCafeLockerPass;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class StudyCafeIOHandler {
+
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
@@ -30,16 +33,21 @@ public class StudyCafeIOHandler {
 
     public StudyCafePassType askPassTypeSelecting() {
         outputHandler.askPassTypeSelection();
-        return inputHandler.getPassTypeSelectingUserAction();
+        String userInput = SCANNER.nextLine();
+        return inputHandler.getPassTypeSelectingUserAction(userInput);
     }
 
     public StudyCafeSeatPass askPassSelection(List<StudyCafeSeatPass> passCandidates) {
         outputHandler.showPassListForSelection(passCandidates);
-        return inputHandler.getSelectPass(passCandidates);
+
+        String userInput = SCANNER.nextLine();
+        return inputHandler.getSelectPass(passCandidates, userInput);
     }
 
     public boolean askLockerPass(StudyCafeLockerPass lockerPassCandidate) {
         outputHandler.askLockerPass(lockerPassCandidate);
-        return inputHandler.getLockerSelection();
+
+        String userInput = SCANNER.nextLine();
+        return inputHandler.getLockerSelection(userInput);
     }
 }

@@ -2,6 +2,8 @@ package cleancode.studycafe.tobe.model.pass;
 
 import cleancode.studycafe.tobe.model.pass.locker.StudyCafeLockerPass;
 
+import java.util.Objects;
+
 public class StudyCafeSeatPass implements StudyCafePass {
 
     private final StudyCafePassType passType;
@@ -30,7 +32,7 @@ public class StudyCafeSeatPass implements StudyCafePass {
 
     public boolean isSameDurationType(StudyCafeLockerPass lockerPass) {
         return lockerPass.isSamePassType(this.passType)
-                && lockerPass.isSameDuration(this.duration);
+            && lockerPass.isSameDuration(this.duration);
     }
 
     @Override
@@ -50,6 +52,18 @@ public class StudyCafeSeatPass implements StudyCafePass {
 
     public int getDiscountPrice() {
         return (int) (this.price * this.discountRate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        StudyCafeSeatPass that = (StudyCafeSeatPass) o;
+        return duration == that.duration && price == that.price && Double.compare(discountRate, that.discountRate) == 0 && passType == that.passType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(passType, duration, price, discountRate);
     }
 
 }
